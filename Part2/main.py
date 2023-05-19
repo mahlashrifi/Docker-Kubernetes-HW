@@ -3,6 +3,7 @@ import httpx
 import json
 
 app = FastAPI()
+client = httpx.AsyncClient()
 
 @app.post("/shorten")
 async def get_shorter_url(data: Request):

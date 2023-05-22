@@ -1,0 +1,5 @@
+kind: ConfigMap
+metadata:
+  name: http-service-configs
+data:
+  message: 'You are connected!'

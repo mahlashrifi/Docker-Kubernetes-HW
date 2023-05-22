@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: server-config
+data:
+  API_KEY: "d18a30a1c0814c08ba0fc14a5c819b4d"
+  END_POINT: "https://api.rebrandly.com/v1/links"
+  VALID_CACHED_TIME: "5"
+  API_PORT: "80"

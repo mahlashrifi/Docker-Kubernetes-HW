@@ -1,0 +1,106 @@
+
+to build dockerfile:
+docker build -t hello-docker .
+
+**after t we write a tag for image and after that 
+the address of dockerfile should be add / . when dockerfile is here
+
+to see all images :
+- docker images
+- docker image ls
+
+see all containers : 
+- docker container ls
+- docker ps -a 
+to run docker image :
+docker run hello docker 
+no difference that in which directory you are
+
+run with mapping port of container to local : 
+docker run --name <container-name> --network <network-name> -p 80:80 <docker-image>
+
+to stop docker container :
+docker stop <docker-container-id>
+
+to remove container : 
+docker rm <container-id>
+
+play with docker
+
+how to publish to repository ?
+https://docs.docker.com/get-started/04_sharing_app/
+
+error =
+denied: requested access to the resource is denied
+solution -> sign in to dockerhub desktop 
+
+
+
+docker container ls
+
+to delete all images, containers, volums, ... of dockerhub :
+docker system prune -a
+
+remove image locally : 
+docker rmi <your-image-id> 
+
+pull docker image from dockerhub : 
+docker pull duckerhubformahla/curl-docker:latest
+<username/repo name:tag>
+
+
+part 2 : 
+
+1 - fast api :
+https://fastapi.tiangolo.com/tutorial/first-steps/
+
+2 - make uvicorn serve up :
+uvicorn main:app --reload
+
+3 - to send http request : n
+httpx because can be async and fast api is async too 
+pip install httpx
+https://www.python-httpx.org/quickstart/
+
+open bash in container :
+docker container run -it p-t:latest bash
+
+
+errors : 
+TLS handshake for building image -> connection is poor
+ssl error and certification problem  for pip install -> firewall and proxies 
+
+docker container inspect <container name or id ? -> to see the detail of docker container
+
+docker container ls
+docker network inspect <network-name>
+docker network --help 
+docker network create <network name>
+docker network connect <network-name> <container-name>
+
+docker rename <container-id or name> new name
+
+--env-file env.list
+
+docker run --name red -v red-vol="/vol" --network part2-net redis
+docker run --env-file env.list --name main --network part2-net -p 80:80 p-t:latest
+
+point : -v volume-name=path can make a volume
+
+https://www.dideo.ir/v/yt/X48VuDVv0do/%D8%AA%D9%85%D8%A7%D8%B4%D8%A7%DB%8C-%D9%88%DB%8C%D8%AF%D8%A6%D9%88-%D8%A7%D8%B2-%D8%AF%DB%8C%D8%AF%D8%A6%D9%88-watch-video-from-dideo
+install minikube 
+https://denisgnoonan.tech/2020/04/05/how-to-set-up-a-minikube-lab/
+
+kubctl apply -f <....yml>
+
+see public ip to request to server
+minikube service --url server
+
+instead of server you shold write pos name
+
+see logs of kubectl
+kubectl logs pod_name
+
+kubectl get deployments
+
+kubectl  exec -it server-765ccc997d-5nn7r -- curl -X POST localhost:80/shorten -d '{\"destination\" : \"https://hub.docker.com/repository\"}'
